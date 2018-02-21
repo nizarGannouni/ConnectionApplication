@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ConnectionApplication</string>
+    <string-array name="continents">
+        <item >Select a continent</item>
+        <item>Asia </item>
+        <item>Africa</item>
+        <item>America</item>
+        <item>Europe</item>
+
+    </string-array>
+</resources>
