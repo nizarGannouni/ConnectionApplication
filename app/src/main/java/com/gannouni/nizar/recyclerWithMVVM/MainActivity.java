@@ -1,22 +1,22 @@
-package com.gannouni.nizar.connectionapplication;
+package com.gannouni.nizar.recyclerWithMVVM;
 
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.gannouni.nizar.recyclerWithMVVM.Model.Country;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private Spinner mySpinner;
-    private RecyclerView myRecyclerView;
+    private RecyclerView recyclerCountries;
     private ArrayList<Country> myCountries;
     private int numContinent;
 
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myRecyclerView = findViewById(R.id.recyclerCountries);
+        recyclerCountries = findViewById(R.id.recyclerCountries);
         mySpinner = findViewById(R.id.spinnerContinents);
 
         if(savedInstanceState!=null){
@@ -35,18 +35,19 @@ public class MainActivity extends AppCompatActivity {
             myCountries = new ArrayList<>();
         }
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item , getResources().getStringArray(R.array.continents));
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.continents));
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinner.setAdapter(arrayAdapter);
         numContinent = 0;
+
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 numContinent = i;
 
                 if(numContinent>0){
-                    MyTask2 myTask2 = new MyTask2();
-                    myTask2.execute();
+                    MyTask myTask = new MyTask();
+                    myTask.execute();
                 }
 
             }
@@ -77,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
         if(myCountries.size()>0){
             CountryAdapter countryAdapter = new CountryAdapter(myCountries);
             RecyclerView.LayoutManager layout = new LinearLayoutManager(getApplicationContext());
-            myRecyclerView.setLayoutManager(layout);
-            myRecyclerView.setAdapter(countryAdapter);
+            recyclerCountries.setLayoutManager(layout);
+            recyclerCountries.setAdapter(countryAdapter);
 
         }
 
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private class MyTask2 extends AsyncTask<Void,Void,Void> {
+    private class MyTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);

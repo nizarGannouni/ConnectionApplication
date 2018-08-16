@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gannouni.nizar.connectionapplication.MainActivity">
+    android:layout_width="match_parent"
+    tools:context="com.gannouni.nizar.recyclerWithMVVM.MainActivity">
 
     <Spinner
         android:id="@+id/spinnerContinents"
@@ -28,6 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerContinents" />
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerContinents"
+        tools:listitem="@layout/one_country" />
 
 </android.support.constraint.ConstraintLayout>

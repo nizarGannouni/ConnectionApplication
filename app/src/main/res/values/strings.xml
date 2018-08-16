@@ -1,7 +1,12 @@
 <resources>
-    <string name="app_name">ConnectionApplication</string>
+    <string name="app_name">With MVVM</string>
+    <string name="km2">Km2</string>
+    <string name="area">Area</string>
+    <string name="deuxPoints">:</string>
+    <string name="capital">Capital</string>
+    <string name="population">Population</string>
     <string-array name="continents">
-        <item >Select a continent</item>
+        <item>Select a continent</item>
         <item>Asia </item>
         <item>Africa</item>
         <item>America</item>
