@@ -1,19 +1,14 @@
 package com.gannouni.nizar.recyclerWithMVVM;
 
-import android.content.Context;
-
 import android.databinding.DataBindingUtil;
-
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Toast;
 
 import com.gannouni.nizar.recyclerWithMVVM.Model.Country;
 import com.gannouni.nizar.recyclerWithMVVM.databinding.OneCountryBinding;
-
 
 import java.util.ArrayList;
 
@@ -39,14 +34,14 @@ public class CountryAdapter  extends  RecyclerView.Adapter<CountryAdapter.Countr
     }
 
     @Override
-    public void onBindViewHolder(CountryHolder holder, int position) {
+    public void onBindViewHolder(final CountryHolder holder, int position) {
 
         final Country country = myCountries.get(position);
         holder.bind(country);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i("country : ",country.toString());
+                Toast.makeText(holder.itemView.getContext(), country.getCapitalCountry(), Toast.LENGTH_SHORT).show();
             }
         });
 

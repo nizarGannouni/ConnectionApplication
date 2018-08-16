@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">With MVVM</string>
+    <string name="app_name">MVVM example</string>
     <string name="km2">Km2</string>
     <string name="area">Area</string>
     <string name="deuxPoints">:</string>
